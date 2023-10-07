@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <div class="container">
+        <div class="title-bar">Book-1 Sheet</div>
+        <div class="menu-bar">
+            <div class="menu-file menu-item">File</div>
+            <div class="menu-home menu-item selected">Home</div>
+            <div class="menu-insert menu-item">Insert</div>
+            <div class="menu-layout menu-item">Layout</div>
+            <div class="menu-help menu-item">Help</div>
+        </div>
+        <div class="menu-icon-bar">
+            <div class="material-icons menu-icon icon-cut ">content_cut</div>
+            <div class="material-icons menu-icon icon-copy ">content_copy</div>
+            <div class="material-icons menu-icon icon-paste ">content_paste</div>
+            <select class="selector font-family-selector" id="font-family" onchange="fontFamilyFunction()">
+                <option style="font-family:Noto Sans" value="Noto Sans">Noto Sans</option>
+                <option style="font-family:Arial" value="Arial">Arial</option>
+                <option style="font-family:Calibari" value="Calibari">Calibari</option>
+                <option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
+                <option style="font-family:Courier New" value="Courier New">Courier New</option>
+                <option style="font-family:Impact" value="Impact">Impact</option>
+                <option style="font-family:Georbia" value="Georbia">Georbia</option>
+                <option style="font-family:Garamond" value="Garamond">Garamond</option>
+                <option style="font-family:Lato" value="Lato">Lato</option>
+                <option style="font-family:Open Sans" value="Open Sans">Open Sans</option>
+                <option style="font-family:Palatino" value="Palatino">Palatino</option>
+                <option style="font-family:Verdana" value="Verdana">Verdana</option>
+            </select>
+            <select class="selector font-size-selector" id="size-selector" onchange="sizeFunction()"> 
+                <option value="10">10</option>
+                <option value="12">12</option>
+                <option value="14">14</option>
+                <option value="16">16</option>
+                <option value="18">18</option>
+                <option value="20">20</option>
+                <option value="22">22</option>
+                <option value="24">24</option>
+                <option value="26">26</option>
+                <option value="28">28</option>
+                <option value="30">30</option>
+            </select>
+            <div class="material-icons menu-icon icon-bold style-icon">format_bold</div>
+            <div class="material-icons menu-icon icon-italic style-icon">format_italic</div>
+            <div class="material-icons menu-icon icon-underline style-icon">format_underline</div>
+            <div class="material-icons menu-icon icon-align_left selected align-icon">format_align_left</div>
+            <div class="material-icons menu-icon icon-align_center align-icon">format_align_center</div>
+            <div class="material-icons menu-icon icon-align_right align-icon" >format_align_right</div>
+            <div class="material-icons menu-icon icon-color_fill ">format_color_fill</div>
+            <div class="material-icons menu-icon icon-color_textt">format_color_text</div>
+        </div>
+        <div class="formula-bar">
+            <div class="formula-editor selected-cell"></div>
+            <div class="function-sign"><img class="formula-icon"   style="width: 1.1rem; " src="https://img.icons8.com/ios/50/000000/formula-fx.png"></div>
+            <div class="formula-editor formula-input"  contenteditable="true"></div>
+
+        </div>
+        <div class="data-container">
+            <div class="select-all"></div>
+            <div class="column-name-container">
+                <!-- <div class="column-name" id="colCode-A colId-1">A</div>
+                <div class="column-name" id="colCode-B colId-2">B</div> -->
+            </div>
+            <div class="row-name-container">
+                <!-- <div class="row-name" id="rowId-1">1</div>
+                <div class="row-name" id="rowId-1">2</div> -->
+            </div>
+            <div class="input-cell-container">
+                <!-- <div class="cell-row">
+                    <div class="input-cell" contenteditable="true"> </div>
+                    <div class="input-cell" contenteditable="true"> </div>
+                </div>
+                <div class="cell-row">
+                    <div class="input-cell" contenteditable="true"> </div>
+                    <div class="input-cell" contenteditable="true"> </div>
+                </div> -->
+            </div>
+        </div>
+        <div class="sheet-bar">
+            <div class="scroller">
+                <div class="material-icons icon-left-scroll">arrow_left</div>
+                <div class="material-icons icon-right-scroll">arrow_right</div>
+            </div>
+            <div class="material-icons icon-add">add_circle</div>
+            <div class="sheet-tab-container">
+                <div class="sheet-tab">Sheet1</div>
+            </div>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>

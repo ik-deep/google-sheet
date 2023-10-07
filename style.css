@@ -1,0 +1,273 @@
+body {
+    margin: 0px;
+    overflow: hidden;
+    /* font-size: 14px; */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.conatiner {
+    height: 100vh;
+}
+
+.title-bar {
+    height: 5vh;
+    background-color: #1e7c41;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.menu-bar {
+    height: 5vh;
+    background-color: #1e7c41;
+    display: flex;
+}
+
+.menu-item {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #fff;
+    font-size: 18;
+    display: flex;
+    align-items: center;
+}
+
+.menu-item:hover {
+    background-color: #124f28;
+    cursor: pointer;
+}
+
+.menu-item.selected {
+    background-color: #fff;
+    color: #1e7c41
+}
+
+.menu-item.selected:hover {
+    background-color: #fff;
+    cursor: default;
+}
+
+.menu-icon-bar {
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    background-color: rgb(241, 241, 241);
+}
+
+.menu-icon {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 80%;
+    display: flex !important;
+    /* justify-content: center; */
+    font-size: 20px !important;
+    align-items: center;
+}
+
+.menu-icon:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.font-family-selector {
+    width: 150px;
+}
+
+.selector {
+    height: 22px;
+    font-size: 14px;
+}
+
+.selector option {
+    font-size: 14px;
+}
+
+
+.formula-bar {
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    background-color: rgb(241, 241, 241);
+}
+
+.formula-editor {
+    height: 70%;
+    border: 1px solid lightgray;
+    background-color: #fff;
+    padding-left: 0.2rem;
+    padding-right: 0.7rem;
+    display: flex;
+    align-items: center;
+    outline-color: #1e7c41;
+}
+
+.selected-cell {
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.function-sign {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formula-input {
+    width: calc(100vw - 160px);
+}
+
+.data-container {
+    height: 73vh;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.select-all {
+    height: 30px;
+    width: 50px;
+    border: 1px solid lightgray;
+}
+
+.row-name-container {
+    height: calc(73vh - 30px);
+    width: 50px;
+    border: 1px solid lightgray;
+    overflow: hidden;
+
+}
+
+.row-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 25px;
+    border-bottom: 1px solid lightgray;
+}
+
+.column-name-container {
+    height: 30px;
+    width: calc(100vw - 50px);
+    border: 1px solid lightgray;
+    display: flex;
+    overflow: hidden;
+}
+
+.column-name {
+    min-width: 100px;
+    border-right: 1px solid lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+
+}
+
+.input-cell-container {
+    width: calc(100vw - 50px);
+    height: calc(73vh - 30px);
+    border: 1px solid lightgray;
+    overflow: scroll;
+}
+
+.cell-row {
+    display: flex;
+}
+
+.input-cell {
+    min-width: 100px;
+    min-height: 25px;
+    padding: 2px;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    /* outline: none; */
+
+}
+
+.sheet-bar {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+
+}
+
+.scroller {
+    width: 60px;
+}
+
+.icon-left-scroll,
+.icon-right-scroll {
+    font-size: 30px;
+}
+
+.icon-left-scroll:hover,
+.icon-right-scroll:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
+
+.icon-add {
+    color: #1e7c41;
+    width: 40px;
+    padding: 4px;
+
+}
+
+.icon-add:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.sheet-tab-container {
+    border: 1px solid lightgray;
+    width: calc(100vw - 100px);
+}
+
+.sheet-tab {
+    border-bottom: 4px solid #1e7c41;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    width: 80px;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    border-right: 1px solid lightgray;
+}
+
+.sheet-tab:hover {
+    cursor: default;
+}
+
+.menu-icon.selected{
+   background-color: lightgray;
+   box-sizing: border-box;
+   border: 1px solid rgb(186, 185, 185);
+}
+
+.input-cell.selected{
+    outline-color: #1e7c41;
+    border: 1px solid #1e7c41;
+}
+
+.top-cell-selected{
+    border-top:none;
+}
+.bottom-cell-selected{
+    border-bottom: 1px solid lightgray
+}
+.left-cell-selected{
+    border-left: none
+}
+.right-cell-selected{
+    border-right: 1px solid lightgray
+}
