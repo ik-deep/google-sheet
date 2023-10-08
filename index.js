@@ -31,6 +31,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let alignLeftIcon = document.getElementsByClassName("icon-align_left");
   let alignCenterIcon = document.getElementsByClassName("icon-align_center");
   let alignRightIcon = document.getElementsByClassName("icon-align_right");
+  let backgroundColorPicker = document.getElementsByClassName("background-color-picker");
+  let textColorPicker = document.getElementsByClassName("text-color-picker");
+  let iconColorFill = document.getElementsByClassName("icon-color_fill");
+  let iconColorText = document.getElementsByClassName("icon-color_text");
+  let fontSize = document.getElementById("size-selector");
+  let fontFamily = document.getElementById("font-family");
+
 
   for (let i = 1; i <= 100; i++) {
     let ans = "";
@@ -156,6 +163,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     cell.addEventListener("blur",function () {
         //  document.getElementsByClassName("input-cell selected")[0].removeAttribute("conteteditable");
         document.getElementsByClassName("input-cell selected")[0].setAttribute("conteteditable", "false");
+        updateCell("text",this.textContent);
       },
       true
     );
@@ -167,6 +175,8 @@ function changeHeader(ele){
   if(cellData[selectedSheet][rowId] && cellData[selectedSheet][rowId][colId] ){
     cellInfo = cellData[selectedSheet][rowId][colId];
   }
+  cellInfo["font-family"]!="Noto Sans" ? fontFamily.value=cellInfo["font-family"] :fontFamily.value="Noto Sans";
+  cellInfo["font-size"]!="14px" ? fontSize.value=cellInfo["font-size"]:fontSize.value="14";
   cellInfo["font-weight"] ? boldIcon[0].classList.add("selected") : boldIcon[0].classList.remove("selected");
   cellInfo["font-style"] ? italicIcon[0].classList.add("selected") : italicIcon[0].classList.remove("selected");
   cellInfo["text-decoration"] ? underLIneIcon[0].classList.add("selected") : underLIneIcon[0].classList.remove("selected");
@@ -177,6 +187,8 @@ function changeHeader(ele){
   document.getElementsByClassName("align-icon selected")[0].classList.remove("selected");
   document.getElementsByClassName(`icon-align_${alignment}`)[0].classList.add("selected");
 
+  cellInfo["background-color"]!="white" ? iconColorFill[0].style.color=cellInfo["background-color"]:iconColorFill[0].style.color="black";
+  cellInfo["color"]!="black" ? iconColorText[0].style.color=cellInfo["color"]:iconColorText[0].style.color="black";
 }
   //   scroll left and top
   cellContainer[0].addEventListener("scroll", function () {
@@ -194,6 +206,9 @@ function changeHeader(ele){
   function updateCell(property, value,defaultPossible) {
     let selectedCells = document.querySelectorAll(".input-cell.selected");
     selectedCells.forEach(function (cell) {
+      if(property=="font-size"){
+        cell.style.setProperty(property,value+"px");
+      }
       cell.style.setProperty(property, value);
       let [rowId,colId] = getRowCol(cell);
       if(cellData[selectedSheet][rowId]){
@@ -267,29 +282,40 @@ function changeHeader(ele){
       updateCell("text-align", "right",false);
     }
   });
-});
-function sizeFunction() {
-  var x = document.getElementById("size-selector");
-  var i = x.selectedIndex;
-  let output = "";
-  if (i != undefined) {
-    output = x.options[i].text;
+
+backgroundColorPicker[0].addEventListener("change",function(){
+  updateCell("background-color",this.value,false);
+})
+textColorPicker[0].addEventListener("change",function(){
+  updateCell("color",this.value,false);
+})
+
+fontFamily.addEventListener("change",function(){
+  updateCell("font-family",this.value);
+})
+
+fontSize.addEventListener("change",function(){
+  updateCell("font-size",this.value);
+})
+
+function emptySheet(){
+  let sheetInfo = cellData[selectedSheet];
+  for(let i of Object.keys(sheetInfo)){
+    for(let j of Object.keys(sheetInfo[i])){
+      let cell = document.getElementById(`row-${i}-col-${j}`);
+      cell.textContent("");
+      cell.setProperty("background-color","#fff");
+      cell.setProperty("color","#000");
+      cell.setProperty("text-align","left");
+      cell.setProperty("font-weight","");
+      cell.setProperty("font-style","");
+      cell.setProperty("text-decoration","");
+      cell.setProperty("font-family","Noto Sans");
+      cell.setProperty("font-size","14px");      
+    }
   }
-  let selectedCells = document.querySelectorAll(".input-cell.selected");
-  selectedCells.forEach(function (cell) {
-    cell.style.fontSize = output + "px";
-  });
 }
 
-function fontFamilyFunction() {
-  var d = document.getElementById("font-family");
-  var i = d.selectedIndex;
-  let output = "";
-  if (i != undefined) {
-    output = d.options[i].text;
-  }
-  let selectedCells = document.querySelectorAll(".input-cell.selected");
-  selectedCells.forEach(function (cell) {
-    cell.style.fontFamily = output;
-  });
-}
+
+});
+

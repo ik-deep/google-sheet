@@ -24,7 +24,7 @@
             <div class="material-icons menu-icon icon-cut ">content_cut</div>
             <div class="material-icons menu-icon icon-copy ">content_copy</div>
             <div class="material-icons menu-icon icon-paste ">content_paste</div>
-            <select class="selector font-family-selector" id="font-family" onchange="fontFamilyFunction()">
+            <select class="selector font-family-selector" id="font-family" >
                 <option style="font-family:Noto Sans" value="Noto Sans">Noto Sans</option>
                 <option style="font-family:Arial" value="Arial">Arial</option>
                 <option style="font-family:Calibari" value="Calibari">Calibari</option>
@@ -38,7 +38,7 @@
                 <option style="font-family:Palatino" value="Palatino">Palatino</option>
                 <option style="font-family:Verdana" value="Verdana">Verdana</option>
             </select>
-            <select class="selector font-size-selector" id="size-selector" onchange="sizeFunction()"> 
+            <select class="selector font-size-selector" id="size-selector"> 
                 <option value="10">10</option>
                 <option value="12">12</option>
                 <option value="14" selected>14</option>
@@ -57,8 +57,14 @@
             <div class="material-icons menu-icon icon-align_left selected align-icon">format_align_left</div>
             <div class="material-icons menu-icon icon-align_center align-icon">format_align_center</div>
             <div class="material-icons menu-icon icon-align_right align-icon" >format_align_right</div>
-            <div class="material-icons menu-icon icon-color_fill ">format_color_fill</div>
-            <div class="material-icons menu-icon icon-color_textt">format_color_text</div>
+            <div  class="menu-icon icon-color_fill">
+                <input class="color-picker background-color-picker" type="color"/>
+                <div class="material-icons ">format_color_fill</div>
+            </div>
+            <div  class="menu-icon icon-color_text">
+                <input class="color-picker  text-color-picker" type="color"/>
+            <div class="material-icons">format_color_text</div>
+            </div>
         </div>
         <div class="formula-bar">
             <div class="formula-editor selected-cell"></div>

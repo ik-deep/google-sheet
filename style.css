@@ -272,3 +272,16 @@ body {
 .right-cell-selected{
     border-right: 1px solid lightgray
 }
+
+.icon-color_fill img,.icon-color_text img{
+    display: none;
+}
+
+.icon-color_fill,.icon-color_text{
+    position: relative;
+    /* color: #1e7c41; */
+}
+.color-picker{
+    position: absolute;
+    opacity: 0;
+}
