@@ -231,10 +231,11 @@ body {
 .sheet-tab-container {
     border: 1px solid lightgray;
     width: calc(100vw - 100px);
+    display: flex;
+    overflow-x: hidden;
 }
 
 .sheet-tab {
-    border-bottom: 4px solid #1e7c41;
     padding-left: 10px;
     padding-right: 10px;
     display: flex;
@@ -244,9 +245,17 @@ body {
     font-weight: 600;
     border-right: 1px solid lightgray;
 }
-
-.sheet-tab:hover {
+.sheet-tab.selected{
+    border-bottom: 4px solid #1e7c41;
+    background-color: lightgray;
+}
+.sheet-tab:hover{
+     cursor: pointer;
+     background-color: lightgray;
+}
+.sheet-tab.selected:hover {
     cursor: default;
+    background-color: #fff;
 }
 
 .menu-icon.selected{
@@ -284,4 +293,5 @@ body {
 .color-picker{
     position: absolute;
     opacity: 0;
+    cursor: pointer;
 }

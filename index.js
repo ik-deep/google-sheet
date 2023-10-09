@@ -16,7 +16,7 @@ let cellData = {
 
 let selectedSheet = "sheet1";
  let totalSheets = 1;
-
+ let lastlyAddedSheet = 1;
 
 
 
@@ -37,6 +37,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let iconColorText = document.getElementsByClassName("icon-color_text");
   let fontSize = document.getElementById("size-selector");
   let fontFamily = document.getElementById("font-family");
+  let sheetAddIcon = document.getElementsByClassName("icon-add");
+  let sheetTabContainer = document.getElementsByClassName("sheet-tab-container");
+  let sheetTab= document.getElementsByClassName("sheet-tab");
 
 
   for (let i = 1; i <= 100; i++) {
@@ -298,24 +301,91 @@ fontSize.addEventListener("change",function(){
   updateCell("font-size",this.value);
 })
 
+
+
+
+sheetAddIcon[0].addEventListener("click",function(){
+  emptySheet();
+  let sheetName = "Sheet"+(lastlyAddedSheet+1);
+  cellData[sheetName] = {};
+  totalSheets +=1;
+  lastlyAddedSheet +=1;
+  document.getElementsByClassName("sheet-tab selected")[0].classList.remove("selected");
+  selectedSheet = sheetName; 
+  sheetTabContainer[0].innerHTML +=`<div class="sheet-tab selected">${sheetName}</div>`;
+  
+  document.getElementsByClassName("sheet-tab selected")[0].addEventListener("click",function(){
+  if(this.classList.contains("selected")){
+    selectSheet(this);
+  }
+})
+});
+
+
+document.getElementsByClassName("sheet-tab")[0].addEventListener("click",function(){
+  if(!this.classList.contains("selected")){
+    selectSheet(this);
+  }
+});
+
+function selectSheet(ele){
+  document.getElementsByClassName("sheet-tab selected")[0].classList.remove("selected");
+  ele.className="sheet-tab selected";
+  emptySheet();
+  selectedSheet = ele.textContent;
+  loadSheet();
+}
+
+
+
+
 function emptySheet(){
   let sheetInfo = cellData[selectedSheet];
   for(let i of Object.keys(sheetInfo)){
     for(let j of Object.keys(sheetInfo[i])){
       let cell = document.getElementById(`row-${i}-col-${j}`);
-      cell.textContent("");
-      cell.setProperty("background-color","#fff");
-      cell.setProperty("color","#000");
-      cell.setProperty("text-align","left");
-      cell.setProperty("font-weight","");
-      cell.setProperty("font-style","");
-      cell.setProperty("text-decoration","");
-      cell.setProperty("font-family","Noto Sans");
-      cell.setProperty("font-size","14px");      
+      cell.textContent="";
+      cell.style.setProperty("background-color","#fff");
+      cell.style.setProperty("color","#000");
+      cell.style.setProperty("text-align","left");
+      cell.style.setProperty("font-weight","");
+      cell.style.setProperty("font-style","");
+      cell.style.setProperty("text-decoration","");
+      cell.style.setProperty("font-family","Noto Sans");
+      cell.style.setProperty("font-size","14px");      
+    }
+  }
+}
+function loadSheet(){
+  let sheetInfo = cellData[selectedSheet];
+  for(let i of Object.keys(sheetInfo)){
+    for(let j of Object.keys(sheetInfo[i])){
+      let cellInfo = sheetInfo[i][j];
+      let cell = document.getElementById(`row-${i}-col-${j}`);
+      cell.textContent=cellInfo["text"];
+      cell.style.setProperty("background-color",cellInfo["background-color"]);
+      cell.style.setProperty("color",cellInfo["color"]);
+      cell.style.setProperty("text-align",cellInfo["text-align"]);
+      cell.style.setProperty("font-weight",cellInfo["font-weight"]);
+      cell.style.setProperty("font-style",cellInfo["font-style"]);
+      cell.style.setProperty("text-decoration",cellInfo["text-decoration"]);
+      cell.style.setProperty("font-family",cellInfo["font-family"]);
+      cell.style.setProperty("font-size",cellInfo["font-size"]);      
     }
   }
 }
 
 
+
+
+
+
+
+
+
 });
 
+
+function myfunc(){
+  console.log("sheet1");
+}
